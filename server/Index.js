@@ -12,25 +12,34 @@ const app = express();
 // чтобы Express отвечал на preflight даже для неизвестных маршрутов
 app.disable('x-powered-by');
 
+// Замените ваш corsOptions на это:
 const allowedOrigins = [
     process.env.CLIENT_URL,
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://your-netlify-app.netlify.app' // добавьте ваш будущий Netlify URL
 ];
 
 const corsOptions = {
-    origin(origin, cb) {
-        if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
-        return cb(new Error('Not allowed by CORS'));
+    origin: function (origin, callback) {
+        // allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
     optionsSuccessStatus: 200
 };
-// Используем единый corsOptions
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Для preflight
 
+// Применяем CORS middleware
+app.use(cors(corsOptions));
+// Handle preflight requests - ДОБАВЬТЕ ЭТО ЗДЕСЬ
+app.options('*', cors(corsOptions));
 
 app.use(express.json())
 
