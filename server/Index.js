@@ -38,6 +38,11 @@ app.get('/roles', async (req, res) => {
     }
 });*/
 
+app.get('/', (req, res) => {
+    res.status(200).json({message: 'Server is running'});
+});
+
+
 app.use(errorHandler)
 // await sequelize.sync() - функция сравнивает бд со схемой данных
 // await sequelize.authenticate(); // Подключение к базе данных
