@@ -7,20 +7,25 @@ const { Sequelize } = require('sequelize'); // Импорт библиотеки
 
 // Создание экземпляра Sequelize
 // В конструктор передаются параметры для подключения к БД
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
-    host: process.env.DB_HOST, // Пока что локальный хост
-    dialect: 'mssql', // Microsoft SQL Server
-    port: process.env.DB_PORT, // 1433
-    dialectOptions: { // Дополнительные настройки
-        options: {
-            encrypt: false, // Отключает шифрование соединения*
-            // true, если используется Azure SQL
-            trustServerCertificate: true // Позволяет доверять самоподписанным сертификатам*
-        }
-    },
-    logging: false
-    // Отключает логирование SQL-запросов в консоль.
-});
+// Создание экземпляра Sequelize
+// Создание экземпляра Sequelize
+const sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
+    {
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        dialect: process.env.DB_DIALECT,
+        logging: false,
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false, // Важно для Render и аналогичных хостингов
+            },
+        },
+    }
+);
 
 // Проверка подключения к базе данных
 async function testConnection() {

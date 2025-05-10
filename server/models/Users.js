@@ -4,10 +4,10 @@ const Roles = require('./Roles');
 const SecretQuestions = require('./SecretQuestions');
 
 const Users = sequelize.define('Users', {
-    ID: { type: DataTypes.TINYINT, primaryKey: true, autoIncrement: true },
+    ID: { type: DataTypes.SMALLINT, primaryKey: true, autoIncrement: true },
     email: { type: DataTypes.STRING(150), allowNull: false },
     password: { type: DataTypes.STRING(150), allowNull: false },
-    role: { type: DataTypes.TINYINT, allowNull: false },
+    role: { type: DataTypes.SMALLINT, allowNull: false },
     number: { type: DataTypes.STRING(150), allowNull: false },
     FIO: { type: DataTypes.STRING(150), allowNull: false },
     isActivated: { type: DataTypes.BOOLEAN, defaultValue: false }, // Активирована ли учетная запись
@@ -17,7 +17,7 @@ const Users = sequelize.define('Users', {
     // Ссылка активации в коде потом преобразуется в htttp://localhost:5000/api/authorization/auth/activate/9650ec3e-4eb5-4e5e-a9f0-610bb179fc9a
     resetPasswordToken: { type: DataTypes.STRING }, // Токен для сброса пароля (временный ключ, отправляемый пользователю).
     resetPasswordExpires: { type: DataTypes.DATE }, // Срок действия токена сброса пароля.
-    secretQuestion: { type: DataTypes.TINYINT, allowNull: true }, // Номер/ID секретного вопроса (например, 1 — "Девичья фамилия матери?").
+    secretQuestion: { type: DataTypes.SMALLINT, allowNull: true }, // Номер/ID секретного вопроса (например, 1 — "Девичья фамилия матери?").
     answerForSecretQuestion: { type: DataTypes.STRING(150), allowNull: true } // Ответ на секретный вопрос (хранится в хэшированном виде, как пароль).
 }, {
     tableName: 'Users',
