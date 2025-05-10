@@ -2,7 +2,7 @@ require('dotenv').config();
 const Users = require('../models/Users');
 const Roles = require('../models/Roles');
 const ApiError = require('../error/ApiError');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const uuid = require('uuid'); // Для генерации уникальной ссылки
