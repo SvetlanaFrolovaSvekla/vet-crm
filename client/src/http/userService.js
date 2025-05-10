@@ -1,6 +1,6 @@
 
 // Все запросы будут отправляться на этот адрес
-const API_URL = 'https://vet-crm-server.onrender.com/api/users';
+const API_URL = 'https://vet-crm.onrender.com/api/users';
 
 
 export const fetchUsers = async () => {
