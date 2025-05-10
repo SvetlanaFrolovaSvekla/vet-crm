@@ -1,11 +1,11 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db');
 
-const Roles = sequelize.define('Roles', {
+const Roles = sequelize.define('roles', {
     ID: { type: DataTypes.SMALLINT, primaryKey: true, autoIncrement: true },
     naimenovanie: { type: DataTypes.STRING(150), allowNull: false }
 }, {
-    tableName: 'Roles',
+    tableName: 'roles',
     timestamps: false
 });
 

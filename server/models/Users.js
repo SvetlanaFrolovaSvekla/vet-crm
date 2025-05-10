@@ -3,7 +3,7 @@ const sequelize = require('../db');
 const Roles = require('./Roles');
 const SecretQuestions = require('./SecretQuestions');
 
-const Users = sequelize.define('Users', {
+const Users = sequelize.define('users', {
     ID: { type: DataTypes.SMALLINT, primaryKey: true, autoIncrement: true },
     email: { type: DataTypes.STRING(150), allowNull: false },
     password: { type: DataTypes.STRING(150), allowNull: false },
@@ -20,7 +20,7 @@ const Users = sequelize.define('Users', {
     secretQuestion: { type: DataTypes.SMALLINT, allowNull: true }, // Номер/ID секретного вопроса (например, 1 — "Девичья фамилия матери?").
     answerForSecretQuestion: { type: DataTypes.STRING(150), allowNull: true } // Ответ на секретный вопрос (хранится в хэшированном виде, как пароль).
 }, {
-    tableName: 'Users',
+    tableName: 'users',
     timestamps: false
 });
 
