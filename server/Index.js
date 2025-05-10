@@ -1,8 +1,7 @@
 require('dotenv').config() // Для использования конст. пременных из .env
-
-const express = require('express');
-const sequelize = require('./db')
-const cors = require('cors')
+const express = require('express'); // веб-фреймворк
+const sequelize = require('./db') // ORM
+const cors = require('cors') // для обращения с разных доменов
 const router = require('./routes/index')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 const helmet = require('helmet');
@@ -26,7 +25,7 @@ app.use(
 app.use('/api', router) // 6. Отдаю роутер с машрутами doljnosti/... т.е будут открыты соотв. контроллеры,
 
 
-// Проверка - h[t]tp://localhost:5000/roles
+/*// Проверка - h[t]tp://localhost:5000/roles
 app.get('/roles', async (req, res) => {
     try {
         const [results] = await sequelize.query('SELECT * FROM Roles');
@@ -35,8 +34,7 @@ app.get('/roles', async (req, res) => {
         console.error('Ошибка при выполнении запроса:', error);
         res.status(500).json({ error: 'Ошибка сервера' });
     }
-});
-
+});*/
 
 app.use(errorHandler)
 // await sequelize.sync() - функция сравнивает бд со схемой данных

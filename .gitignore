@@ -4,6 +4,7 @@ server/node_modules/
 
 # Ignore environment files
 server/.env
+client/.env
 
 # Ignore build output
 client/build/
