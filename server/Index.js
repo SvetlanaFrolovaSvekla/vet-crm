@@ -12,9 +12,11 @@ const app = express();
 app.disable('x-powered-by');
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:3000/registration'],
-}))
-
+    origin: ['http://localhost:3000'],
+    credentials: true, // ← если используете куки или заголовки авторизации
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.use(express.json())
 
 app.use(
