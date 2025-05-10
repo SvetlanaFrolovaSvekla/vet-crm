@@ -9,15 +9,25 @@ const helmet = require('helmet');
 const PORT = process.env.PORT || 5000;
 
 const app = express();
+// чтобы Express отвечал на preflight даже для неизвестных маршрутов
+app.options('*', cors());
 app.disable('x-powered-by');
 
 const allowedOrigins = [
-    'http://localhost:3000'
+    process.env.CLIENT_URL,            // главное значение
+    'http://localhost:3000'            // вдруг забудете поменять
 ];
 
 app.use(cors({
-    origin: allowedOrigins,
+    origin(origin, cb) {
+        // разрешить Postman/Insomnia (origin === undefined)
+        if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
+        return cb(new Error('Not allowed by CORS'));
+    },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    optionsSuccessStatus: 200          // для старых браузеров
 }));
 
 
