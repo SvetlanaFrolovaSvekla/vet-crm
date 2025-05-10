@@ -1,0 +1,11 @@
+.MyBth {
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: #000000;
+    font-size: 18px;
+    background: transparent;
+    border: 1px solid #000000;
+    cursor: pointer;
+    margin-left: 30px;
+
+}

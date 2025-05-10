@@ -1,0 +1,21 @@
+/* Основной контейнер */
+.container {
+    display: flex; /* Делаем контейнер flex-контейнером */
+    height: 100vh; /* Занимаем всю высоту экрана */
+}
+
+/* Стили для панели */
+.panel {
+    flex: 0 0 200px;
+    background-color: #f4f4f4; /* Цвет фона панели */
+    padding: 10px; /* Отступы внутри панели */
+    border-right: 1px solid #ccc; /* Граница справа */
+    max-width: 20px;
+}
+
+/* Стили для контента (Routes) */
+.content {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}

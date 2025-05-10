@@ -1,0 +1,143 @@
+.adminBlock {
+    margin-top: 80px;
+    color: #000;
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 70px;
+}
+
+/* Левая колонка */
+.leftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 850px;
+    max-width: 850px;
+}
+
+
+
+
+/* Блок пользователя в две колонки */
+.userBlock {
+    display: flex;
+    flex-direction: row; /* Горизонтальное расположение */
+    align-items: center;
+    gap: 50px; /* Расстояние между колонками */
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border: 1px solid black;
+}
+
+/* Левая колонка (аватар + кнопка) */
+.userLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Правая колонка (информация) */
+.userRight {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    font-size: 18px;
+}
+
+/* Аватар */
+.avatar img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Кнопка */
+.redact {
+    margin-top: 20;
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 25px;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.redact:hover {
+    background: #B9FF66;
+}
+
+
+
+.name, .email, .telefon, .role {
+
+}
+
+.name {
+    font-size: 25px;
+    color: #3e8059;
+    font-weight: bold;
+}
+
+.editPass {
+    margin-top: 35px;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+
+
+
+
+
+
+
+
+/* Карточки */
+.cardBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid black;
+}
+
+
+
+
+
+/* Визиты (справа) */
+.visitsBlock {
+    flex-grow: 1;
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-height: 1200px;
+    width: 300px;
+    max-width: 400px;
+    border: 1px solid black;
+}
+

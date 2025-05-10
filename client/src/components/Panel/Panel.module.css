@@ -1,0 +1,48 @@
+/* Основные стили для панели */
+.panelBlock {
+    position: fixed; /* Фиксируем панель на экране */
+    left: -170px; /* Скрываем панель, оставляя видимым только уголок */
+    top: 50%; /* Размещаем по центру вертикально */
+    transform: translateY(-50%); /* Центрируем по вертикали */
+    width: 200px; /* Ширина панели */
+    background: linear-gradient(145deg, #6a11cb, #2575fc); /* Градиентный фон */
+    border-radius: 0 15px 15px 0; /* Закругляем правые углы */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень */
+    color: white; /* Белый текст */
+    font-family: 'Arial', sans-serif; /* Шрифт */
+    font-size: 14px; /* Размер текста */
+    line-height: 1.6; /* Межстрочный интервал */
+    padding: 20px; /* Отступы внутри панели */
+    cursor: pointer; /* Курсор в виде указателя */
+    transition: left 0.5s ease; /* Плавная анимация выезда */
+    z-index: 1000; /* Убедимся, что панель поверх других элементов */
+}
+
+/* Стили для видимого уголка */
+.panelBlock::before {
+    content: '';
+    position: absolute;
+    right: -20px; /* Размещаем справа от панели */
+    top: 50%; /* Центрируем по вертикали */
+    transform: translateY(-50%);
+    width: 20px; /* Ширина уголка */
+    height: 60px; /* Высота уголка */
+    background: linear-gradient(145deg, #6a11cb, #2575fc); /* Градиентный фон */
+    border-radius: 0 10px 10px 0; /* Закругляем правые углы */
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2); /* Тень */
+}
+
+/* Анимация выезда */
+.panelBlock.visible {
+    left: 0; /* Панель полностью выезжает */
+}
+
+/* Стили для контента внутри панели */
+.content {
+    opacity: 0; /* Изначально контент скрыт */
+    transition: opacity 0.3s ease 0.2s; /* Плавное появление с задержкой */
+}
+
+.panelBlock.visible .content {
+    opacity: 1; /* Контент становится видимым */
+}

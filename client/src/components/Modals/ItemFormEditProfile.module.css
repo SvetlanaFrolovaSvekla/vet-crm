@@ -1,0 +1,81 @@
+.form {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+}
+
+.inputEdit {
+    font-size: 17px;
+    width: 450px;
+    border: 1px solid #1a1a1a;
+
+}
+
+.selectEdit {
+    font-size: 17px;
+    width: 481px;
+    border: 1px solid #1a1a1a;
+    height: 33px;
+    margin-top: 10px;
+}
+
+
+.btn_createOK {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgba(73, 133, 55, 0.92);
+    border: none;
+    padding: 10px 40px;
+    font-size: 16px;
+    border-radius: 20px;
+    transition: background 0.3s;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.btn_createOK:hover {
+    background-color: #4d4d4d;
+}
+
+.btn_createNO {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgba(143, 15, 53, 0.82);
+    border: none;
+    padding: 10px 40px;
+    font-size: 16px;
+    border-radius: 20px;
+    transition: background 0.3s;
+    color: white;
+    cursor: pointer;
+}
+
+.btn_createNO:hover {
+    background-color: #4d4d4d;
+}
+
+.btn_cont {
+    margin-top: 5px;
+}
+
+.title {
+    margin-bottom: 10px;
+}
+
+.titlePassword {
+    margin-bottom: 10px;
+    color: #007bff;
+    background: none;
+    border: none;
+    padding: 0;
+
+}
+
+.titlePassword:hover {
+    margin-bottom: 10px;
+    color: #1157a1;
+    text-decoration: underline; /* Добавляем подчеркивание при наведении */
+}

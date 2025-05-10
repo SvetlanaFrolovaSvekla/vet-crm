@@ -1,0 +1,155 @@
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+/* Стили для заголовков таблицы */
+.table thead tr {
+    width: 100%;
+    background-color: #2f2f2f;
+    color: #ffffff;
+    text-align: left;
+}
+
+.table th,
+.table td {
+    padding: 12px 40px;
+    text-align: left;
+}
+
+.table th {
+    text-align: left;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+
+.table tbody tr:hover {
+    background-color: rgba(231, 222, 204, 0.55);
+    transition: background-color 0.1s ease;
+}
+
+.table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+/* Устанавливаем ширину первого столбца ID */
+.table th:first-child, .table td:first-child {
+    width: 30px;
+    text-align: center;
+}
+
+.table th:nth-child(3), .table td:nth-child(3),
+.table th:nth-child(4), .table td:nth-child(4),
+.table th:nth-child(5), .table td:nth-child(5),
+.table th:nth-child(6), .table td:nth-child(6){
+    width: 150px;
+    text-align: center;
+}
+
+
+
+
+
+
+/* Устанавливаем ширину столбцов */
+.table th:nth-child(1), .table td:nth-child(1) {
+    width: 50px; /* № */
+    text-align: center;
+}
+
+.table th:nth-child(2), .table td:nth-child(2) {
+    width: 250px; /* наз */
+}
+
+.table th:nth-child(3), .table td:nth-child(3) {
+    width: 150px; /* ед изм */
+}
+
+.table th:nth-child(4), .table td:nth-child(4) {
+    width: 100px; /* колво */
+    text-align: center;
+}
+
+.table th:nth-child(5), .table td:nth-child(5) {
+    width: 100px; /* сумма */
+}
+
+.table th:nth-child(6), .table td:nth-child(6) {
+    width: 350px; /* действия */
+}
+
+
+/* Стили для ячейки с кнопками */
+.actionsCell {
+    display: flex;
+    gap: 10px; /* Расстояние между кнопками */
+    justify-content: center; /* Выравнивание кнопок по центру */
+    align-items: center; /* Выравнивание по вертикали */
+}
+
+
+
+/* Стили кнопок */
+.btn_edit, .btn_del {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn_edit {
+    margin-right: 10px;
+    padding: 10px 30px;
+    min-width: 120px;
+    background-color: #4ea271;
+    font-size: 15px;
+}
+
+.btn_edit:hover {
+    background-color: #3e8059;
+    transform: translateY(-2px);
+}
+
+.btn_del {
+    font-size: 14px;
+    padding: 10px 50px;
+    min-width: 120px;
+    background-color: #d36960;
+}
+
+.btn_del:hover {
+    background-color: #b65b53;
+    transform: translateY(-2px);
+}
+
+.title_length_null {
+    text-align: center;
+}

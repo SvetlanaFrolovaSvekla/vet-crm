@@ -1,0 +1,147 @@
+@font-face {
+    font-family: 'Space Grotesk Light';
+    src: url('../../resources/fonts/SpaceGrotesk-Bold.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+
+/* Меню в целом */
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(3px);
+    padding: 10px 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    height: 70px; /* Фиксированная высота */
+
+}
+
+
+/* ---------------------------Логотип--------------------------- */
+.cont_logo {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    font-size: 22px;
+    font-family: 'Space Grotesk Light', sans-serif;
+
+}
+
+.logoImage {  /* Вместо .logo-image */
+    margin-top: 18px;
+    margin-bottom: 25px;
+    width: 145px; /* Попробуй уменьшить размер */
+    height: auto;
+    margin-left: 15px; /* Отступ для выравнивания */
+}
+
+.logoText {
+    margin-left: 10px;
+    font-style: italic;
+    transform: skew(-5deg); /* Легкий наклон */
+}
+
+
+
+
+/* ---------------------------Ссылки--------------------------- */
+
+.cont_navigat {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Расстояние между блоками */
+    margin-right: 20px; /* Чтобы не прилипало к краю */
+}
+
+.cont_links {
+    display: flex;
+    margin-right: 20px;
+}
+
+.links {
+    display: flex;
+    gap: 50px; /* Расстояние между ссылками */
+}
+
+.links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    font-weight: 100;
+    font-family: 'Arial', sans-serif;
+    transition: color 0.3s ease;
+}
+
+
+.links a:hover {
+    color: #639629; /* Цвет при наведении */
+}
+
+/* ---------------------------Кнопки--------------------------- */
+
+.cont_btn {
+    display: flex;
+    margin-right: 35px;
+}
+
+.btn {
+    display: flex;
+    gap: 25px;
+
+
+}
+
+.btn a {
+    text-decoration: none;
+    background-color: #ffffff; /* Цвет кнопки */
+    color: #000000;
+    padding: 15px 35px;
+    font-size: 18px;
+    font-family: 'Space Grotesk Light', sans-serif;
+    transition: background-color 0.3s ease;
+    border: 1px solid black;
+    border-radius: 14px;
+}
+
+.btn a:hover {
+    background-color: #B9FF66;
+}
+
+
+.btnBord {
+    text-decoration: none;
+    background-color: #ffffff; /* Цвет кнопки */
+    color: #000000;
+    padding: 12px 35px;
+    font-size: 18px;
+    font-family: 'Space Grotesk Light', sans-serif;
+    transition: background-color 0.3s ease;
+    border: 1px solid black;
+    border-radius: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btnBord:hover {
+    background-color: #B9FF66;
+}

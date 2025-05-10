@@ -1,0 +1,45 @@
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Полупрозрачный фон */
+    backdrop-filter: blur(3px);
+    padding: 10px 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cont_logo {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Playfair Display', sans-serif;
+}
+
+
+.logo-image {
+    margin-right: 10px;
+}
+
+.logoText {
+    margin-left: 10px;
+    font-style: italic;
+    transform: skew(-5deg); /* Легкий наклон */
+}

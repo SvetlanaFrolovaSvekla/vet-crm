@@ -1,0 +1,98 @@
+@font-face {
+    font-family: 'Space Grotesk Light';
+    src: url('../../resources/fonts/SpaceGrotesk-Bold.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+
+
+.contentBlock {
+    margin-top: 90px; /* Должно быть не меньше высоты Navbar */
+    padding: 20px;
+    background-color: #ffffff;
+    height: calc(94vh - 90px); /* Вычитаем высоту Navbar */
+    overflow: hidden; /* Чтобы контент не выходил за пределы */
+}
+
+.content {
+    display: flex;
+    justify-content: space-between; /* Распределяет элементы: один слева, другой справа */
+    align-items: center; /* Выравнивает по центру по вертикали */
+    height: 100%; /* Чтобы контент занимал всю доступную высоту */
+}
+
+.infoCont {
+    font-size: 24px;
+    color: black;
+    flex: 1; /* Занимает всю доступную ширину слева */
+    padding-left: 20px; /* Добавляет отступ слева */
+
+}
+
+.mainImageCont {
+    width: 580px;
+    display: flex;
+    justify-content: center; /* Центрирует картинку внутри */
+    align-items: center;
+    padding-right: 20px; /* Отступ справа */
+}
+
+.mainImageCont img {
+    max-width: 100%; /* Чтобы изображение не выходило за границы */
+    height: auto;
+}
+
+
+
+
+
+.btn {
+    display: flex;
+    gap: 25px;
+}
+
+.btn a {
+    text-decoration: none;
+    background-color: #ffffff; /* Цвет кнопки */
+    color: #000000;
+    padding: 15px 35px;
+    font-size: 18px;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
+    border: 1px solid black;
+    border-radius: 14px;
+}
+
+.btn a:hover {
+    background-color: #B9FF66;
+}
+
+
+
+.infoCont {
+    display: flex;
+    flex-direction: column; /* Элементы идут в колонку (текст сверху, кнопка снизу) */
+    justify-content: center; /* Центрирует по вертикали */
+    align-items: center; /* Центрирует по горизонтали */
+    text-align: center; /* Центрирует сам текст */
+    height: 100%; /* Чтобы контент занимал всю высоту родительского блока */
+}
+
+
+.infoContP1 {
+    width: 420px;
+    font-size: 30px;
+    letter-spacing: 2px;
+    line-height: 1.7;
+}
+
+.infoContP2 {
+    margin-top: -20px;
+    width: 720px;
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 1.3;
+    letter-spacing: 0px;
+}
+

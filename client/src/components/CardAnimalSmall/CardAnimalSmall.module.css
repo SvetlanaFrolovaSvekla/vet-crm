@@ -1,0 +1,51 @@
+
+/* Левая часть (текст) */
+.textBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+/* Правая часть (аватарка) */
+.avatar img {
+    width: 95px;
+    height: 120px;
+}
+
+/* Карточка */
+.cardBlock {
+    display: flex;
+    justify-content: space-between; /* Раздвигаем контент */
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid black;
+    width: 100%;
+    max-width: 500px;
+}
+
+.cardBlock {
+    width: 100%; /* Растягиваем карточку под родительский контейнер */
+    max-width: none; /* Убираем ограничение по ширине */
+}
+
+
+.more {
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.more:hover {
+    background: #B9FF66;
+}
+
+
