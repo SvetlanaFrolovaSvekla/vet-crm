@@ -24,8 +24,8 @@ const Users = sequelize.define('Users', {
     timestamps: false
 });
 
-Users.belongsTo(Roles, { foreignKey: 'role', targetKey: 'ID' });
-Users.belongsTo(SecretQuestions, { foreignKey: 'secretQuestion', targetKey: 'ID' });
+Users.belongsTo(Roles, { foreignKey: 'role', targetKey: 'id' });
+Users.belongsTo(SecretQuestions, { foreignKey: 'secretQuestion', targetKey: 'id' });
 
 module.exports = Users;
 
