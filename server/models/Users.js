@@ -3,7 +3,7 @@ const sequelize = require('../db');
 const Roles = require('./Roles');
 const SecretQuestions = require('./SecretQuestions');
 
-const Users = sequelize.define('users', {
+const Users = sequelize.define('Users', {
     ID: { type: DataTypes.SMALLINT, primaryKey: true, autoIncrement: true },
     email: { type: DataTypes.STRING(150), allowNull: false },
     password: { type: DataTypes.STRING(150), allowNull: false },
