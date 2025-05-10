@@ -4,7 +4,7 @@
 * */
 
 // Все запросы будут отправляться на этот адрес
-const API_URL = 'http://localhost:5000/api/roles';
+const API_URL = 'https://vet-crm-server.onrender.com/api/roles';
 
 
 /*

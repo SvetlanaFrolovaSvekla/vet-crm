@@ -11,10 +11,15 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.disable('x-powered-by');
 
+const allowedOrigins = [
+    'http://localhost:3000'
+];
+
 app.use(cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true // если в будущем будешь использовать cookies или авторизацию с сессиями
-}))
+    origin: allowedOrigins,
+    credentials: true,
+}));
+
 
 
 app.use(express.json())
