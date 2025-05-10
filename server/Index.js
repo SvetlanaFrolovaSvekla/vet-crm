@@ -12,7 +12,7 @@ const app = express();
 app.disable('x-powered-by');
 
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: ['https://vet-app-svetlana.netlify.app'],
     credentials: true, // ← если используете куки или заголовки авторизации
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
