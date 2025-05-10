@@ -12,22 +12,22 @@ const app = express();
 // чтобы Express отвечал на preflight даже для неизвестных маршрутов
 app.disable('x-powered-by');
 
-// Упрощенная настройка CORS
 const allowedOrigins = [
-    process.env.CLIENT_URL,
-    'http://localhost:3000'
+    process.env.CLIENT_URL || 'http://localhost:3000'
 ];
 
-// Настройка CORS - более простая версия
 app.use(cors({
-    origin: '*', // временно разрешить все источники
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
-
-// Обработка preflight запросов для всех маршрутов
-app.options('*', cors());
 
 
 app.use(express.json())

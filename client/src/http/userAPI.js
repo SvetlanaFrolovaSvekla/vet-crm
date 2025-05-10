@@ -10,7 +10,10 @@ export const login = async (email, password) => {
 
 
 export const registration = async (email, password, number, FIO) => {
-    const { data } = await $host.post('api/authorization/registration', { email, password, number, FIO, role: 1 });
+    const { data } = await $host.post('api/authorization/registration', { email, password, number, FIO, role: 1 },
+        {
+        withCredentials: true
+    });
     localStorage.setItem('token', data.token);
     return data.user;
 };
