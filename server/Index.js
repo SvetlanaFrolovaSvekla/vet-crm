@@ -1,79 +1,46 @@
-require('dotenv').config() // Для использования конст. пременных из .env
-const express = require('express'); // веб-фреймворк
-const sequelize = require('./db') // ORM
-const cors = require('cors') // для обращения с разных доменов
-const router = require('./routes/index')
-const errorHandler = require('./middleware/ErrorHandlingMiddleware')
+require('dotenv').config();
+const express = require('express');
+const sequelize = require('./db');
+const cors = require('cors'); // Импортируем cors
+const router = require('./routes/index');
+const errorHandler = require('./middleware/ErrorHandlingMiddleware');
 const helmet = require('helmet');
 
 const PORT = process.env.PORT || 5000;
-
 const app = express();
-// чтобы Express отвечал на preflight даже для неизвестных маршрутов
+
+
+app.use(cors()); // Без параметров = разрешить всё
+app.options('*', cors()); // Явно разрешаем preflight для всех маршрутов
+
+// Другие middleware
 app.disable('x-powered-by');
-
-const allowedOrigins = [
-    process.env.CLIENT_URL || 'http://localhost:3000'
-];
-
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+app.use(express.json());
+app.use(helmet({
+    frameguard: { action: 'deny' },
+    contentSecurityPolicy: false,
 }));
 
+// Роутеры
+app.use('/api', router);
 
-app.use(express.json())
-
-app.use(
-    helmet({
-        frameguard: { action: 'deny' }, // <- явно запрещаем встраивание в iframe
-        contentSecurityPolicy: false, // отключаем CSP для отладки
-
-    })
-);
-
-
-app.use('/api', router) // 6. Отдаю роутер с машрутами doljnosti/... т.е будут открыты соотв. контроллеры,
-
-
-/*// Проверка - h[t]tp://localhost:5000/roles
-app.get('/roles', async (req, res) => {
-    try {
-        const [results] = await sequelize.query('SELECT * FROM Roles');
-        res.json(results);
-    } catch (error) {
-        console.error('Ошибка при выполнении запроса:', error);
-        res.status(500).json({ error: 'Ошибка сервера' });
-    }
-});*/
-
-// CORS для отладки - для проверки что сервер отвечает на запросы CORS
+// Тестовый эндпоинт
 app.get('/test-cors', (req, res) => {
-    res.json({ message: 'CORS test successful!' });
+    res.json({ message: 'CORS разрешён для всех!', timestamp: new Date() });
 });
 
-app.use(errorHandler)
+// Обработка ошибок
+app.use(errorHandler);
 
-
-
-
-// await sequelize.sync() - функция сравнивает бд со схемой данных
-// await sequelize.authenticate(); // Подключение к базе данных
+// Запуск сервера
 const start = async () => {
     try {
-        await sequelize.authenticate()
-        await sequelize.sync()
-        app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
+        await sequelize.authenticate();
+        await sequelize.sync();
+        app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
     } catch (e) {
-        console.log(e)
+        console.error('Ошибка запуска сервера:', e);
     }
-}
+};
+
 start();

@@ -2,7 +2,9 @@ import {$authHost, $host} from "./index";
 import { jwtDecode } from "jwt-decode";
 
 export const login = async (email, password) => {
-    const { data } = await $host.post('api/authorization/login', { email, password });
+    const { data } = await $host.post('api/authorization/login', { email, password },  {
+        withCredentials: true
+    });
     console.log("Ответ сервера при логине:", data);
     localStorage.setItem('token', data.token);
     return data.user;
@@ -31,7 +33,7 @@ export const check = async () => {
 
 export const forgotPassword = async (email) => {
     console.log(`Запрос на: ${process.env.REACT_APP_API_URL}/api/authorization/forgot-password`);
-    const { data } = await $host.post('api/authorization/forgot-password', { email });
+    const { data } = await $host.post('api/authorization/forgot-password', { email }, );
     return data;
 };
 
