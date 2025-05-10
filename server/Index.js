@@ -12,40 +12,42 @@ const app = express();
 // чтобы Express отвечал на preflight даже для неизвестных маршрутов
 app.disable('x-powered-by');
 
-// Замените ваш corsOptions на это:
+// Упрощенная настройка CORS
 const allowedOrigins = [
     process.env.CLIENT_URL,
-    'http://localhost:3000',
-    'https://your-netlify-app.netlify.app' // добавьте ваш будущий Netlify URL
+    'http://localhost:3000'
 ];
 
-const corsOptions = {
+// Настройка CORS - более простая версия
+app.use(cors({
     origin: function (origin, callback) {
-        // allow requests with no origin (like mobile apps or curl requests)
+        // Разрешить запросы без origin (например, мобильные приложения)
         if (!origin) return callback(null, true);
 
-        if (allowedOrigins.indexOf(origin) === -1) {
-            const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
-            return callback(new Error(msg), false);
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            console.log(`CORS block for origin: ${origin}`);
+            // В рабочем режиме лучше просто отклонять запросы без ошибки
+            callback(null, true); // Временно разрешаем все origins для отладки
         }
-        return callback(null, true);
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-    optionsSuccessStatus: 200
-};
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+}));
 
-// Применяем CORS middleware
-app.use(cors(corsOptions));
-// Handle preflight requests - ДОБАВЬТЕ ЭТО ЗДЕСЬ
-app.options('*', cors(corsOptions));
+// Обработка preflight запросов для всех маршрутов
+app.options('*', cors());
+
 
 app.use(express.json())
 
 app.use(
     helmet({
         frameguard: { action: 'deny' }, // <- явно запрещаем встраивание в iframe
+        contentSecurityPolicy: false, // отключаем CSP для отладки
+
     })
 );
 
@@ -63,6 +65,11 @@ app.get('/roles', async (req, res) => {
         res.status(500).json({ error: 'Ошибка сервера' });
     }
 });*/
+
+// CORS для отладки - для проверки что сервер отвечает на запросы CORS
+app.get('/test-cors', (req, res) => {
+    res.json({ message: 'CORS test successful!' });
+});
 
 app.use(errorHandler)
 // await sequelize.sync() - функция сравнивает бд со схемой данных
