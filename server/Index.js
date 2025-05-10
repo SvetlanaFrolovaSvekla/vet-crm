@@ -10,26 +10,26 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 // чтобы Express отвечал на preflight даже для неизвестных маршрутов
-app.options('*', cors());
 app.disable('x-powered-by');
 
 const allowedOrigins = [
-    process.env.CLIENT_URL,            // главное значение
-    'http://localhost:3000'            // вдруг забудете поменять
+    process.env.CLIENT_URL,
+    'http://localhost:3000'
 ];
 
-app.use(cors({
+const corsOptions = {
     origin(origin, cb) {
-        // разрешить Postman/Insomnia (origin === undefined)
         if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
         return cb(new Error('Not allowed by CORS'));
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    optionsSuccessStatus: 200          // для старых браузеров
-}));
-
+    optionsSuccessStatus: 200
+};
+// Используем единый corsOptions
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Для preflight
 
 
 app.use(express.json())
