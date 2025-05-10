@@ -11,7 +11,11 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.disable('x-powered-by');
 
-app.use(cors())
+app.use(cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true // если в будущем будешь использовать cookies или авторизацию с сессиями
+}))
+
 
 app.use(express.json())
 
