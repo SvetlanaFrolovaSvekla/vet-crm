@@ -12,7 +12,7 @@ const app = express();
 app.disable('x-powered-by');
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: ['http://localhost:3000', 'https://ваш-другой-домен.com'],
 }))
 
 app.use(express.json())
